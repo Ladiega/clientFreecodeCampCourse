@@ -83,6 +83,19 @@ const pageBySlugQuery = (slug: string) => qs.stringify(
               cta: true,
             },
           },
+
+          "blocks.featured-article": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              link: true,
+            },
+          },
+          "blocks.subscribe": {
+            populate: true,
+          },
+
         },
       },
     },
@@ -110,6 +123,19 @@ const globalSettingQuery = qs.stringify({
         },
         navigation: true,
         cta: true,
+      },
+    },
+    footer: {
+      populate: {
+        logo: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        navigation: true,
+        policies: true,
       },
     },
   },
